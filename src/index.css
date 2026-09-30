@@ -94,6 +94,10 @@ p {
     color: var(--text-h);
 }
 
+ul{
+    list-style-type: none;
+}
+
 /* ---------------------------------- Components ---------------------------------- */
 
 /* ---------------------------------- Shared ---------------------------------- */
@@ -108,7 +112,50 @@ p {
     cursor: pointer;
 }
 
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------------------------------- Header ---------------------------------- */
+
+
+nav {
+    border-bottom: 1px solid var(--accent-border);
+}
+
+nav > ul {
+    width: 60rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between
+}
+
+/* ---------------------------------- Ticket List ---------------------------------- */
+
+.ticketList{
+    width: 60rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.currentTickets{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 /* ---------------------------------- Ticket Cards ---------------------------------- */
+
+.card{
+    width: 90%;
+    height: 5rem;
+    margin-bottom: 1.5rem;
+    background: var(--accent-bg);
+}
 
 /* ---------------------------------- Buttons ---------------------------------- */
 
