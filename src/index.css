@@ -96,6 +96,7 @@ p {
 
 ul{
     list-style-type: none;
+    padding: 0;
 }
 
 /* ---------------------------------- Components ---------------------------------- */
@@ -108,7 +109,6 @@ ul{
     color: var(--text-h);
     border-radius: 12px;
     padding: 15px 17px;
-    box-shadow: var(--shadow);
     cursor: pointer;
 }
 
@@ -139,22 +139,23 @@ nav > ul {
     width: 60rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 .currentTickets{
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 /* ---------------------------------- Ticket Cards ---------------------------------- */
 
 .card{
-    width: 90%;
+    width: 95%;
     height: 5rem;
-    margin-bottom: 1.5rem;
-    background: var(--accent-bg);
+    margin-bottom: 1rem;
+    background: var(--social-bg);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
 }
 
 /* ---------------------------------- Buttons ---------------------------------- */
