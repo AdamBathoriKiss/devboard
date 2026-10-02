@@ -99,6 +99,13 @@ ul{
     padding: 0;
 }
 
+input{
+    height: 1.5rem;
+    border-radius: 5px;
+    background: var(--social-bg);
+    border: none;
+}
+
 /* ---------------------------------- Components ---------------------------------- */
 
 /* ---------------------------------- Shared ---------------------------------- */
@@ -169,9 +176,17 @@ nav > ul {
 .btn-theme {
     width: 2rem;
     height: 2rem;
-    background: var(--buttonBg);
+    background: var(--social-bg);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+
+/* ---------------------------------- Input field ---------------------------------- */
+
+.searchBar {
+    width: 15rem;
+    padding: 0 0.5rem;
 }

@@ -25,7 +25,7 @@ export default function Navigation(): React.JSX.Element {
 					<h3>DevBoard</h3>
 				</li>
 				<li>
-					<input type="text" />
+					<input type="search" className="searchBar" placeholder="&#128269; Ticketek keresése"/>
 				</li>
 				<li>
 					<Button
