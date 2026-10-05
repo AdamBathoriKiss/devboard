@@ -1,5 +1,5 @@
 import type React from "react";
-import Ticket from "./Ticket";
+import Ticket from "./TicketDetail";
 
 export default function TicketList(): React.JSX.Element {
 	return (

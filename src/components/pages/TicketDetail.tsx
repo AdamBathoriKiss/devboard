@@ -1,6 +1,6 @@
 import type React from "react";
 
-export default function Ticket(): React.JSX.Element{
+export default function TicketDetail(): React.JSX.Element{
     return (
         <div className="card">
             

@@ -1,13 +1,14 @@
-import React from "react";
-import Navigation from "./components/ui/Navigation";
-import TicketList from "./components/ui/TicketList";
+import type React from "react";
+import { ThemeProvider } from "./ThemeProvider";
+import { RouterProvider } from "react-router";
+import { router } from "./Router";
 
-function App() {
+
+function App(): React.JSX.Element {
 	return (
-		<React.Fragment>
-			<Navigation />
-            <TicketList/>
-		</React.Fragment>
+		<ThemeProvider>
+			<RouterProvider router={router}/>
+		</ThemeProvider>
 	);
 }
 export default App;
