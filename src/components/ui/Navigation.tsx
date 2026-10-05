@@ -31,14 +31,6 @@ export default function Navigation(): React.JSX.Element {
 							</li>
 							<li>
 								<Button
-									label="Rendezés: Prioritás"
-									icon={icons.sortDownIcon}
-									className="componentBox "
-									onClick={toggleTheme}
-								/>
-							</li>
-							<li>
-								<Button
 									className="componentBox"
 									label="Új ticket"
 									icon={icons.sortAddIcon}
@@ -68,9 +60,7 @@ export default function Navigation(): React.JSX.Element {
 							onClick={toggleTheme}
 						/>
 					</li>
-					<li>
-						<Button icon={icon} className="componentBox btn-theme" onClick={toggleTheme} />
-					</li>
+
 
 					<li>
 						<Button

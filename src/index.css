@@ -206,9 +206,13 @@ nav > ul {
 }
 
 .btn-theme {
-	width: 2rem;
-	height: 2rem;
-	background: var(--social-bg);
+    position: fixed;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    z-index: 1000;
+	width: 2.5rem;
+	height: 2.5rem;
+	background: var(--boxBg);
 	display: flex;
 	align-items: center;
 	justify-content: center;
