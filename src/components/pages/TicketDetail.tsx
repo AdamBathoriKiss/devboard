@@ -1,9 +1,24 @@
 import type React from "react";
 
-export default function TicketDetail(): React.JSX.Element{
-    return (
-        <div className="card">
-            
-        </div>
-    )
+interface Ticket {
+    type: "create" | "edit";
+}
+
+export default function TicketDetail({type}: Ticket): React.JSX.Element{
+
+    if(type === "create") {
+        return (
+            <div className="card">
+                <h3>Hozzáadás</h3>
+            </div>
+        )
+    }else {
+        return (
+            <div className="card">
+
+                <h3>Szerkesztés</h3>
+            </div>
+        )
+    }
+    
 }

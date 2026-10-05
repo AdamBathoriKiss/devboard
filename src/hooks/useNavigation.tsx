@@ -10,8 +10,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import { ThemeContext } from "../ThemeProvider";
+import { useNavigate } from "react-router";
 
 export default function useNavigation() {
+	const navigate = useNavigate();
 	let screen = window.innerWidth;
 
 	const { theme, setTheme } = React.useContext(ThemeContext);
@@ -44,5 +46,15 @@ export default function useNavigation() {
         setMenuActive(!menuActive)
     }
 
-	return { icons, icon, toggleTheme,toggleMenu, menuActive, mobile };
+    const refresh = () => {
+        navigate('/')
+        if(menuActive){setMenuActive(false)}
+    }
+
+    const createTicket = () => {
+        navigate('/ticket/add')
+        if(menuActive){setMenuActive(false)}
+    }
+
+	return { icons, icon, toggleTheme,toggleMenu, menuActive, mobile,refresh,createTicket };
 }

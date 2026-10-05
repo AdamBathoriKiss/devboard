@@ -10,8 +10,8 @@ export const router = createBrowserRouter([
         element: <Appshell/>,
         children: [
             {index: true, element: <TicketList/>},
-            {path:"ticket/add", element: <Ticket/>},
-            {path:"ticket/:id", element: <Ticket/>}
+            {path:"ticket/add", element: <Ticket type="create"/>},
+            {path:"ticket/:id", element: <Ticket type="edit"/>}
         ],
         errorElement: <ErrorPage/>
     }
