@@ -2,14 +2,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useMediaQuery } from "./useMediaQuery";
-import iconlist from "../components/shared/iconlist";
+import { icons } from "../components/shared/icons";
 
 
 export default function useNavigation() {
 	const navigate = useNavigate();
 	const isMobile = useMediaQuery('(max-width: 568px)');
     const [menuActive, setMenuActive] = useState(false);
-    const {icons} = iconlist()
 
 
     const toggleMenu = () => {
@@ -17,6 +16,7 @@ export default function useNavigation() {
     }
 
     const refresh = () => {
+        navigate('/')
         if(menuActive){setMenuActive(false)}
     }
 

@@ -1,11 +1,9 @@
 import React from "react";
 import Button from "../shared/Button";
 import useNavigation from "../../hooks/useNavigation.tsx";
-import useTheme from "../../hooks/useTheme.tsx";
 
 export default function Navigation(): React.JSX.Element {
 	const { icons, toggleMenu, menuActive, isMobile, refresh, createTicket } = useNavigation();
-	const {toggleTheme} = useTheme();
 
 	if (isMobile) {
 		return (

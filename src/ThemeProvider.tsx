@@ -1,8 +1,10 @@
 import React, { createContext, useEffect } from "react";
 
+type Theme = "light" | "dark";
+
 type ThemeContextType = {
-	theme: string;
-	setTheme: React.Dispatch<React.SetStateAction<string>>;
+	theme: Theme;
+	setTheme: React.Dispatch<React.SetStateAction<Theme>>;
 };
 
 const ThemeContext = createContext<ThemeContextType>({
@@ -11,7 +13,7 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-	const [theme, setTheme] = React.useState("dark");
+	const [theme, setTheme] = React.useState<Theme>("dark");
 
 	useEffect(() => {
 		document.documentElement.setAttribute("data-theme", theme);
