@@ -1,8 +1,10 @@
-import type React from "react";
+import React from "react";
 import Button from "../shared/Button";
-import useNavigation from "../../hooks/useNavigation";
+import useTheme from "../../hooks/useTheme";
+import iconlist from "../shared/iconlist";
 
 export default function Theme(): React.JSX.Element {
-	const { icon, toggleTheme } = useNavigation();
-	return <Button icon={icon} className="componentBox btn-theme" onClick={toggleTheme} />;
+    const {icons} = iconlist();
+	const { theme,toggleTheme } = useTheme();
+	return <Button icon={theme ==="dark" ? icons.moonIcon : icons.sunIcon} className="componentBox btn-theme" onClick={toggleTheme} />;
 }

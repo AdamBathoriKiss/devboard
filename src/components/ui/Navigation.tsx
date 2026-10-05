@@ -1,9 +1,11 @@
 import React from "react";
 import Button from "../shared/Button";
 import useNavigation from "../../hooks/useNavigation.tsx";
+import useTheme from "../../hooks/useTheme.tsx";
 
 export default function Navigation(): React.JSX.Element {
-	const { icons, toggleTheme, toggleMenu, menuActive, isMobile, refresh, createTicket } = useNavigation();
+	const { icons, toggleMenu, menuActive, isMobile, refresh, createTicket } = useNavigation();
+	const {toggleTheme} = useTheme();
 
 	if (isMobile) {
 		return (
@@ -57,7 +59,7 @@ export default function Navigation(): React.JSX.Element {
 							label="Rendezés: Prioritás"
 							icon={icons.sortDownIcon}
 							className="componentBox "
-							onClick={toggleTheme}
+							onClick={()=> alert('Rendezés folyamatban')}
 						/>
 					</li>
 
