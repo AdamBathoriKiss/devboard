@@ -11,10 +11,12 @@ import {
 import React, { useEffect, useState } from "react";
 import { ThemeContext } from "../ThemeProvider";
 import { useNavigate } from "react-router";
+import { useMediaQuery } from "./useMediaQuery";
+
 
 export default function useNavigation() {
 	const navigate = useNavigate();
-	let screen = window.innerWidth;
+	const isMobile = useMediaQuery('(max-width: 568px)');
 
 	const { theme, setTheme } = React.useContext(ThemeContext);
 	const hamburgerIcon = <FontAwesomeIcon icon={faBars} />;
@@ -26,16 +28,8 @@ export default function useNavigation() {
 	const sortAddIcon = <FontAwesomeIcon icon={faPlus} />;
 	const icons = { hamburgerIcon,openedMenuIcon, sunIcon, moonIcon, sortDownIcon, sortUpIcon, sortAddIcon };
 	const [icon, setIcon] = React.useState(theme === "light" ? icons.sunIcon : icons.moonIcon);
-    const [mobile, setMobile] = useState(false);
     const [menuActive, setMenuActive] = useState(false);
 
-    useEffect(()=> {
-        if(screen <= 576){
-            setMobile(true)
-        }else {
-            setMobile(false)
-        }
-    }, [screen])
 
 	const toggleTheme = () => {
 		setTheme(theme === "light" ? "dark" : "light");
@@ -56,5 +50,5 @@ export default function useNavigation() {
         if(menuActive){setMenuActive(false)}
     }
 
-	return { icons, icon, toggleTheme,toggleMenu, menuActive, mobile,refresh,createTicket };
+	return { icons, icon, toggleTheme,toggleMenu, menuActive, isMobile,refresh,createTicket };
 }

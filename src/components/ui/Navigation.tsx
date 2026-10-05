@@ -3,9 +3,9 @@ import Button from "../shared/Button";
 import useNavigation from "../../hooks/useNavigation.tsx";
 
 export default function Navigation(): React.JSX.Element {
-	const { icons, icon, toggleTheme, toggleMenu, menuActive, mobile, refresh, createTicket } = useNavigation();
+	const { icons, toggleTheme, toggleMenu, menuActive, isMobile, refresh, createTicket } = useNavigation();
 
-	if (mobile) {
+	if (isMobile) {
 		return (
 			<React.Fragment>
 				<nav className="content">
