@@ -10,7 +10,7 @@ export default function TicketList(): React.JSX.Element {
 			{ticketCategories.map((category)=>
 				<div className="currentTickets" key={category}>
 					<h5>{category}</h5>
-					<Ticket type="edit"/> /* Később a ticketek listázása */
+					<Ticket type="edit"/> {/* Később a ticketek listázása */}
 				</div>
 			)}
 			</div>
