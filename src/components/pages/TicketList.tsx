@@ -2,25 +2,17 @@ import type React from "react";
 import Ticket from "./TicketDetail";
 
 export default function TicketList(): React.JSX.Element {
+	const ticketCategories = ["Todo", "Folyamatban", "Kész"];
+
 	return (
 		<div className="content">
 			<div className="ticketList">
-				<div className="currentTickets">
-					<h5>Todo</h5>
-                    <Ticket type="edit"/>
+			{ticketCategories.map((category)=>
+				<div className="currentTickets" key={category}>
+					<h5>{category}</h5>
+					<Ticket type="edit"/> /* Később a ticketek listázása */
 				</div>
-				<div className="currentTickets">
-					<h5>Folyamatban</h5>
-                    <Ticket type="edit"/>
-                    
-                    <Ticket type="edit"/>
-				</div>
-				<div className="currentTickets">
-					<h5>Kész</h5>
-                    <Ticket type="edit"/>
-                    
-                    <Ticket type="edit"/>
-				</div>
+			)}
 			</div>
 		</div>
 	);
