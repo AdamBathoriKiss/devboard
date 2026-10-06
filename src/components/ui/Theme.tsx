@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../shared/Button";
-import useTheme from "../../hooks/useTheme";
+import useTheme from "../../hooks/useTheme.ts";
 import { icons } from "../shared/icons";
 
 export default function Theme(): React.JSX.Element {

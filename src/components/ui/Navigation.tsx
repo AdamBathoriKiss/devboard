@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../shared/Button";
-import useNavigation from "../../hooks/useNavigation.tsx";
+import useNavigation from "../../hooks/useNavigation.ts";
 import { icons } from "../shared/icons.tsx";
 
 export default function Navigation(): React.JSX.Element {

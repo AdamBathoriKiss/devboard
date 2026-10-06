@@ -1,5 +1,5 @@
 import type React from "react";
-import { ThemeProvider } from "./ThemeProvider";
+import { ThemeProvider } from "./context/ThemeProvider";
 import { RouterProvider } from "react-router";
 import { router } from "./Router";
 
