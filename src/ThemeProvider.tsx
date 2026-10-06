@@ -1,16 +1,6 @@
-import React, { createContext, useEffect } from "react";
+import React, { useEffect } from "react";
+import { ThemeContext, type Theme } from "./components/shared/ThemeContext";
 
-type Theme = "light" | "dark";
-
-type ThemeContextType = {
-	theme: Theme;
-	setTheme: React.Dispatch<React.SetStateAction<Theme>>;
-};
-
-const ThemeContext = createContext<ThemeContextType>({
-	theme: "dark",
-	setTheme: () => {},
-});
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 	const [theme, setTheme] = React.useState<Theme>("dark");
@@ -22,4 +12,4 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 	return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 };
 
-export { ThemeContext, ThemeProvider };
+export { ThemeProvider };
