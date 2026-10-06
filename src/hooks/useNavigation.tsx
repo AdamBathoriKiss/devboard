@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useMediaQuery } from "./useMediaQuery";
-import { icons } from "../components/shared/icons";
 
 
 export default function useNavigation() {
@@ -25,5 +24,5 @@ export default function useNavigation() {
         if(menuActive){setMenuActive(false)}
     }
 
-	return { icons,toggleMenu, menuActive, isMobile,refresh,createTicket };
+	return { toggleMenu, menuActive, isMobile,refresh,createTicket };
 }

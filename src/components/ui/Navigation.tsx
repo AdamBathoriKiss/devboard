@@ -1,9 +1,10 @@
 import React from "react";
 import Button from "../shared/Button";
 import useNavigation from "../../hooks/useNavigation.tsx";
+import { icons } from "../shared/icons.tsx";
 
 export default function Navigation(): React.JSX.Element {
-	const { icons, toggleMenu, menuActive, isMobile, refresh, createTicket } = useNavigation();
+	const { toggleMenu, menuActive, isMobile, refresh, createTicket } = useNavigation();
 
 	if (isMobile) {
 		return (
