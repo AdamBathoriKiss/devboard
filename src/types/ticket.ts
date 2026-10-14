@@ -7,7 +7,7 @@ export interface TicketCategory {
 }
 
 export type Ticket = {
-    id: string | number;
+    id: string;
     title: string;
     description: string;
     responsible: string;
