@@ -1,19 +1,26 @@
 import type React from "react";
-import Ticket from "./TicketDetail";
-import type { TicketCategory } from "../../types/ticket";
+import useTicketList from "../../hooks/useTicketList";
+import TicketBox from "./TicketBox";
+
 
 export default function TicketList(): React.JSX.Element {
-	const ticketCategories:TicketCategory[] = [{type: "todo", label:"Todo"},{type: "in_progress", label:"Folyamatban"},{type: "closed", label:"Kész"}];
+	const { ticketCategories, ticketList } = useTicketList();
 
 	return (
 		<div className="content">
 			<div className="ticketList">
-			{ticketCategories.map((category)=>
-				<div className="currentTickets" key={category.type}>
-					<h5>{category.label}</h5>
-					<Ticket type="edit"/> {/* Később a ticketek listázása */}
-				</div>
-			)}
+				{ticketCategories.map((category) => {
+					const columnTickets = ticketList.filter((ticket) => category.type === ticket.status);
+
+					return (
+						<div className="currentTickets" key={category.type}>
+							<h5>{category.label}</h5>
+							{columnTickets.map((ticket) => (
+								<TicketBox ticket={ticket} key={ticket.id}/>
+							))}
+						</div>
+					);
+				})}
 			</div>
 		</div>
 	);
