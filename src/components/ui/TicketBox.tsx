@@ -8,7 +8,7 @@ export default function TicketBox({ ticket }: TicketBoxProps): React.JSX.Element
 	const navigate = useNavigate();
 
   const dateFormatter = (updatedAt: string) => {
-        return new Date(updatedAt);
+        return new Date(updatedAt).toLocaleDateString();
   }
 
 	return (
@@ -21,7 +21,7 @@ export default function TicketBox({ ticket }: TicketBoxProps): React.JSX.Element
 				<p>{ticket.title}</p>
 			</div>
 			<div className="card-details">
-				<p>{ticket.updatedAt}</p>
+				<p>{dateFormatter(ticket.updatedAt)}</p>
 				<p>{ticket.gitHubIssueNumber}</p>
 			</div>
 		</div>
