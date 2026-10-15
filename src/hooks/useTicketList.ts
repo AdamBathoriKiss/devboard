@@ -10,17 +10,14 @@ export default function useTicketList() {
 
 	const [ticketList, setTicketList] = React.useState<Ticket[]>([]);
 	const [isLoading, setIsLoading] = React.useState(false);
-	const [error, setError] = React.useState(null);
+	const [error, setError] = React.useState();
 
 	const getTicketList = () => {
 		setIsLoading(true);
-		fetch("/api/tickets")
+		fetch("/api/ticket")
 			.then(async (res) => {
+				if (!res.ok) setError(res.status);
 				setTicketList(await res.json());
-			})
-			.catch((err) => {
-				console.log(err.response)
-				setError(err);
 			})
 			.finally(() => {
 				setIsLoading(false);
