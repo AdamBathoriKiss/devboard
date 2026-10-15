@@ -1,10 +1,10 @@
 import type React from "react";
 
-type TicketDetail = {
+type TicketDetailProps = {
 	type : "edit" | "create"
 }
 
-export default function TicketDetail({ type }: TicketDetail): React.JSX.Element {
+export default function TicketDetail({ type }: TicketDetailProps): React.JSX.Element {
 	if (type === "create") {
 		return (
 			<div className="content">
