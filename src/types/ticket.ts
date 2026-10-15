@@ -9,7 +9,6 @@ export interface TicketCategory {
 export type Ticket = {
     id: string;
     title: string;
-    type: "edit" | "create";
     description: string;
     responsible: string;
     status: TicketStatus;

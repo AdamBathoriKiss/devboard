@@ -1,6 +1,6 @@
 import type React from "react";
 import useTicketList from "../../hooks/useTicketList";
-import TicketBox from "./TicketBox";
+import TicketBox from "../ui/TicketBox";
 
 
 export default function TicketList(): React.JSX.Element {
