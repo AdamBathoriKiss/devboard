@@ -10,14 +10,16 @@ export default function useTicketList() {
 
 	const [ticketList, setTicketList] = React.useState<Ticket[]>([]);
 	const [isLoading, setIsLoading] = React.useState(false);
-	const [error, setError] = React.useState();
+	const [error, setError] = React.useState<string | null>();
 
 	const getTicketList = () => {
 		setIsLoading(true);
-		fetch("/api/ticket")
+		fetch("/api/tickets")
 			.then(async (res) => {
-				if (!res.ok) setError(res.status);
+				if (!res.ok) throw new Error(`Hiba: ${res.status}`);
 				setTicketList(await res.json());
+			}).catch((err)=> {
+				setError(err.message)
 			})
 			.finally(() => {
 				setIsLoading(false);

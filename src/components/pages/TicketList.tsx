@@ -5,9 +5,9 @@ import TicketBox from "../ui/TicketBox";
 export default function TicketList(): React.JSX.Element {
 	const { ticketCategories, ticketList, isLoading, error } = useTicketList();
 
-/*	if(error){
-		return <p>Váratlan hiba történt: {error}</p>
-	} */
+	if (error) {
+		return <p>Váratlan hiba történt: {error}</p>;
+	}
 
 	if (isLoading) {
 		return <h4>Adatok betöltése folyamatban</h4>;
