@@ -9,14 +9,27 @@ export default function useTicketList() {
 	];
 
 	const [ticketList, setTicketList] = React.useState<Ticket[]>([]);
+	const [isLoading, setIsLoading] = React.useState(false);
+	const [error, setError] = React.useState(null);
+
+	const getTicketList = () => {
+		setIsLoading(true);
+		fetch("/api/tickets")
+			.then(async (res) => {
+				setTicketList(await res.json());
+			})
+			.catch((err) => {
+				console.log(err.response)
+				setError(err);
+			})
+			.finally(() => {
+				setIsLoading(false);
+			});
+	};
 
 	React.useEffect(() => {
-		fetch("/api/tickets").then(async (res) => {
-			if (typeof res.json !== undefined) {
-				setTicketList(await res.json());
-			}
-		});
+		getTicketList();
 	}, []);
 
-	return { ticketCategories, ticketList };
+	return { ticketCategories, ticketList, isLoading, error };
 }
