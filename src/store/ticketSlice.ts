@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Ticket } from "../types/ticket";
 
 export interface TicketState {
@@ -17,8 +17,8 @@ export const ticketSlice = createSlice({
     name: 'ticket',
     initialState,
     reducers:{
-        setLoading: state => {
-            state.isLoading = !state.isLoading
+        setLoading: (state, action: PayloadAction<boolean>) => {
+            state.isLoading = action.payload;
         }
     }
 })
