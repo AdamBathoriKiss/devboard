@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { Ticket, TicketCategory } from "../types/ticket";
+import type { Ticket } from "../types/ticket";
 
 export interface TicketState {
     ticketList: Ticket[],
@@ -9,7 +9,7 @@ export interface TicketState {
 
 const initialState: TicketState = {
     ticketList: [],
-    isLoading: false,
+    isLoading: true,
     error: null
 }
 
