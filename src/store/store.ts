@@ -1,7 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
+import ticketReducer from './ticketSlice';
 
 export const store = configureStore({
-    reducer: {}
+    reducer: {
+        ticket: ticketReducer
+    }
 });
 
 // Infer the `RootState`, `AppDispatch`, and `AppStore` types from the store itself
