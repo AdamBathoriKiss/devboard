@@ -11,33 +11,13 @@ export interface TicketState {
     error: string | null;
 }
 
-const fetchTicketList = createAsyncThunk(
-    'tickets/list',
-    async () => {
-        const response = await fetch('/api/tickets').then((res)=> {
-            if (!res.ok) throw new Error(`Hiba: ${res.status}`);
-				return res.json()
-        }).catch((err)=> {
-            return err.message
-        })
-        return response.formData
-    }
-)
-
-/*
-
- fetch("/api/tickets")
-			.then(async (res) => {
-				if (!res.ok) throw new Error(`Hiba: ${res.status}`);
-				setTicketList(await res.json());
-			}).catch((err)=> {
-				setError(err.message)
-			})
-			.finally(() => {
-				setIsLoading(false);
-			});
-
-*/
+const fetchTicketList = createAsyncThunk("tickets/list", async () => {
+    const response = await fetch("/api/tickets").then((res) => {
+        if (!res.ok) throw new Error(`Hiba: ${res.status}`);
+        return res.json();
+    });
+    return response;
+});
 
 const initialState: TicketState = {
     ticketList: [],
@@ -54,15 +34,21 @@ export const ticketSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchTicketList.fulfilled, (state, action)=>{
-            if (!state.error) throw new Error(`Hiba:`);
+        builder.addCase(fetchTicketList.pending, (state, action) => {
+            state.isLoading = true;
+            if (state.error !== null) {
+                state.error = null;
+            }
+        });
+        builder.addCase(fetchTicketList.fulfilled, (state, action) => {
             state.ticketList = action.payload;
-            setLoading(false)
+            state.isLoading = false;
         });
-        builder.addCase(fetchTicketList.rejected, (state,action)=>{
-            state.error = action.error.toString()
+        builder.addCase(fetchTicketList.rejected, (state, action) => {
+            state.error = action.error.message ?? action.error.message!;
+            state.isLoading = false;
         });
-    }
+    },
 });
 
 export const { setLoading } = ticketSlice.actions;
