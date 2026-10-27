@@ -11,7 +11,7 @@ export interface TicketState {
     error: string | null;
 }
 
-const fetchTicketList = createAsyncThunk("tickets/list", async ():Promise<Ticket[]> => {
+export const fetchTicketList = createAsyncThunk("tickets/list", async ():Promise<Ticket[]> => {
     const response = await fetch("/api/tickets").then((res) => {
         if (!res.ok) throw new Error(`Hiba: ${res.status}`);
         return res.json();
@@ -29,6 +29,7 @@ export const ticketSlice = createSlice({
     name: "ticket",
     initialState,
     reducers: {
+        /* Tanultam belőle, marad */
         setLoading: (state, action: PayloadAction<boolean>) => {
             state.isLoading = action.payload;
         },
