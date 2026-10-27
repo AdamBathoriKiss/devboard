@@ -14,7 +14,12 @@ export interface TicketState {
 const fetchTicketList = createAsyncThunk(
     'tickets/list',
     async () => {
-        const response = await fetch('/api/tickets')
+        const response = await fetch('/api/tickets').then((res)=> {
+            if (!res.ok) throw new Error(`Hiba: ${res.status}`);
+				return res.json()
+        }).catch((err)=> {
+            return err.message
+        })
         return response.formData
     }
 )
@@ -51,8 +56,12 @@ export const ticketSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchTicketList.fulfilled, (state, action)=>{
             if (!state.error) throw new Error(`Hiba:`);
-            state.ticketList.push(action.payload)
-        })
+            state.ticketList = action.payload;
+            setLoading(false)
+        });
+        builder.addCase(fetchTicketList.rejected, (state,action)=>{
+            state.error = action.error.toString()
+        });
     }
 });
 
