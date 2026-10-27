@@ -11,7 +11,7 @@ export interface TicketState {
     error: string | null;
 }
 
-const fetchTicketList = createAsyncThunk("tickets/list", async () => {
+const fetchTicketList = createAsyncThunk("tickets/list", async ():Promise<Ticket[]> => {
     const response = await fetch("/api/tickets").then((res) => {
         if (!res.ok) throw new Error(`Hiba: ${res.status}`);
         return res.json();
@@ -36,16 +36,14 @@ export const ticketSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchTicketList.pending, (state) => {
             state.isLoading = true;
-            if (state.error !== null) {
-                state.error = null;
-            }
+            state.error = null;
         });
         builder.addCase(fetchTicketList.fulfilled, (state, action) => {
             state.ticketList = action.payload;
             state.isLoading = false;
         });
         builder.addCase(fetchTicketList.rejected, (state, action) => {
-            state.error = action.error.message ?? action.error.message!;
+            state.error = action.error.message ?? "Váratlan hiba történt";
             state.isLoading = false;
         });
     },
