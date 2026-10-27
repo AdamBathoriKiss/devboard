@@ -34,7 +34,7 @@ export const ticketSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchTicketList.pending, (state, action) => {
+        builder.addCase(fetchTicketList.pending, (state) => {
             state.isLoading = true;
             if (state.error !== null) {
                 state.error = null;
