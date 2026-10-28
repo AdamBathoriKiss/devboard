@@ -1,33 +1,23 @@
 import React from "react";
-import type { Ticket, TicketCategory } from "../types/ticket";
+import type { TicketCategory } from "../types/ticket";
+import { useAppSelector,useAppDispatch } from "../store/hooks";
+import { fetchTicketList } from "../store/ticketSlice";
+
+const ticketCategories: TicketCategory[] = [
+    { type: "todo", label: "Todo" },
+    { type: "in_progress", label: "Folyamatban" },
+    { type: "closed", label: "Kész" },
+];
 
 export default function useTicketList() {
-	const ticketCategories: TicketCategory[] = [
-		{ type: "todo", label: "Todo" },
-		{ type: "in_progress", label: "Folyamatban" },
-		{ type: "closed", label: "Kész" },
-	];
+	const ticketList = useAppSelector(state => state.tickets.ticketList);
+	const isLoading = useAppSelector(state => state.tickets.isLoading);
+	const error = useAppSelector(state => state.tickets.error);
+	const dispatch = useAppDispatch();
 
-	const [ticketList, setTicketList] = React.useState<Ticket[]>([]);
-	const [isLoading, setIsLoading] = React.useState(true);
-	const [error, setError] = React.useState<string | null>();
+    React.useEffect(() => {
+        dispatch(fetchTicketList())
+    }, []);
 
-	const getTicketList = () => {
-		fetch("/api/tickets")
-			.then(async (res) => {
-				if (!res.ok) throw new Error(`Hiba: ${res.status}`);
-				setTicketList(await res.json());
-			}).catch((err)=> {
-				setError(err.message)
-			})
-			.finally(() => {
-				setIsLoading(false);
-			});
-	};
-
-	React.useEffect(() => {
-		getTicketList();
-	}, []);
-
-	return { ticketCategories, ticketList, isLoading, error };
+    return { ticketCategories, ticketList, isLoading, error };
 }
