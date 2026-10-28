@@ -17,7 +17,7 @@ export default function useTicketList() {
 
     React.useEffect(() => {
         dispatch(fetchTicketList())
-    }, []);
+    }, [dispatch]);
 
     return { ticketCategories, ticketList, isLoading, error };
 }
