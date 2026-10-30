@@ -13,6 +13,16 @@ export default function TicketDetail({
     const ticketList = useAppSelector((state) => state.tickets.ticketList);
     const currentTicket = ticketList.find((item) => item.id === ticketId.id);
 
+    if(!currentTicket){
+        return (
+            <div className="content">
+                <div className="card">
+                    <h3>A ticket a megadott ID-val nem található.</h3>
+                </div>
+            </div>
+        )
+    }
+
     console.log(currentTicket);
     if (type === "create") {
         return (
