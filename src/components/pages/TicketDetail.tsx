@@ -11,9 +11,9 @@ export default function TicketDetail({
 }: TicketDetailProps): React.JSX.Element {
     const ticketId = useParams();
     const ticketList = useAppSelector((state) => state.tickets.ticketList);
-    const currentTicket = ticketList.filter((item) => item.id === ticketId.id);
+    const currentTicket = ticketList.find((item) => item.id === ticketId.id);
 
-    console.log(currentTicket[0]);
+    console.log(currentTicket);
     if (type === "create") {
         return (
             <div className="content">
@@ -26,7 +26,7 @@ export default function TicketDetail({
         return (
             <div className="content">
                 <div className="card">
-                    <h3># {currentTicket[0].id} szerkesztése </h3>
+                    <h3># {currentTicket?.id} szerkesztése </h3>
                     <ul>
                         {Object.entries(currentTicket).map(([key, value]) => {
                             return (<li key={key}>{value}</li>);
