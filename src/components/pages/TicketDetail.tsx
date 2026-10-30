@@ -28,8 +28,8 @@ export default function TicketDetail({
                 <div className="card">
                     <h3># {currentTicket[0].id} szerkesztése </h3>
                     <ul>
-                        {currentTicket.map((item, key) => {
-                            return <li>{item[key]}</li>;
+                        {Object.entries(obj).forEach(([key, value]) => {
+                            return (<li key={key}>{value}</li>);
                         })}
                     </ul>
                 </div>
