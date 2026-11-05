@@ -233,3 +233,80 @@ nav > ul {
 	width: 15rem;
 	padding: 0 0.5rem;
 }
+
+
+/* ---------------------------------- Ticket Form ---------------------------------- */
+
+.content:has(> .card > .form) {
+	flex: 1;
+	min-height: calc(100svh - 5rem);
+	width: 100%;
+	padding: 2rem 1rem;
+	box-sizing: border-box;
+}
+
+.card:has(> .form) {
+	width: min(100%, 42rem);
+	height: auto;
+	margin: 0 auto;
+	padding: clamp(1.25rem, 4vw, 2.5rem);
+	background: var(--boxBg);
+	border: 1px solid var(--border);
+	border-radius: 1rem;
+	box-shadow: var(--shadow);
+	box-sizing: border-box;
+	display: block;
+}
+
+.form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.65rem;
+}
+
+.form label {
+	margin-top: 0.4rem;
+	color: var(--text-h);
+	font-size: 0.9rem;
+	font-weight: 600;
+}
+
+.form input,
+.form textarea,
+.form select {
+	width: 100%;
+	min-height: 3rem;
+	padding: 0.7rem 0.9rem;
+	border: 1px solid var(--border);
+	border-radius: 0.65rem;
+	background: var(--bg);
+	color: var(--text-h);
+	font: inherit;
+	box-sizing: border-box;
+	transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.form textarea {
+	min-height: 8rem;
+	resize: vertical;
+}
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+	border-color: var(--accent);
+	outline: none;
+	box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+@media (max-width: 576px) {
+	.content:has(> .card > .form) {
+		min-height: calc(100svh - 4rem);
+		padding: 1.25rem 0.9rem;
+	}
+
+	.card:has(> .form) {
+		padding: 1.25rem;
+	}
+}
