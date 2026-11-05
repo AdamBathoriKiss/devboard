@@ -235,31 +235,18 @@ nav > ul {
 }
 
 
-<<<<<<< Updated upstream
-/* ---------------------------------- Ticket Form ---------------------------------- */
-
-.content:has(> .card > .form) {
-	flex: 1;
-	min-height: calc(100svh - 5rem);
-=======
 
 /* A TicketDetail űrlapját tartalmazó kártya */
 .content:has(.form) {
 	flex: 1;
 	min-height: calc(100svh - 50rem);
->>>>>>> Stashed changes
 	width: 100%;
 	padding: 2rem 1rem;
 	box-sizing: border-box;
 }
 
-<<<<<<< Updated upstream
-.card:has(> .form) {
-	width: min(100%, 42rem);
-=======
 .card:has(.form) {
 	width: min(100%, 32rem);
->>>>>>> Stashed changes
 	height: auto;
 	margin: 0 auto;
 	padding: clamp(1.25rem, 4vw, 2.5rem);
@@ -268,20 +255,6 @@ nav > ul {
 	border-radius: 1rem;
 	box-shadow: var(--shadow);
 	box-sizing: border-box;
-<<<<<<< Updated upstream
-	display: block;
-}
-
-.form {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	gap: 0.65rem;
-}
-
-.form label {
-	margin-top: 0.4rem;
-=======
 }
 
 /* A .form div mezői egymás alatt jelenjenek meg */
@@ -294,7 +267,6 @@ nav > ul {
 
 .form label {
 	margin-top: 0.2rem;
->>>>>>> Stashed changes
 	color: var(--text-h);
 	font-size: 0.9rem;
 	font-weight: 600;
@@ -304,11 +276,7 @@ nav > ul {
 .form textarea,
 .form select {
 	width: 100%;
-<<<<<<< Updated upstream
-	min-height: 3rem;
-=======
 	min-height: 1.8rem;
->>>>>>> Stashed changes
 	padding: 0.7rem 0.9rem;
 	border: 1px solid var(--border);
 	border-radius: 0.65rem;
@@ -320,11 +288,7 @@ nav > ul {
 }
 
 .form textarea {
-<<<<<<< Updated upstream
-	min-height: 8rem;
-=======
 	min-height: 4rem;
->>>>>>> Stashed changes
 	resize: vertical;
 }
 
@@ -337,23 +301,12 @@ nav > ul {
 }
 
 @media (max-width: 576px) {
-<<<<<<< Updated upstream
-	.content:has(> .card > .form) {
-=======
 	.content:has(.form) {
->>>>>>> Stashed changes
 		min-height: calc(100svh - 4rem);
 		padding: 1.25rem 0.9rem;
 	}
 
-<<<<<<< Updated upstream
-	.card:has(> .form) {
-		padding: 1.25rem;
-	}
-}
-=======
 	.card:has(.form) {
 		padding: 1.25rem;
 	}
 }
->>>>>>> Stashed changes
