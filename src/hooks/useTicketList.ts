@@ -1,7 +1,5 @@
-import React from "react";
 import type { TicketCategory } from "../types/ticket";
-import { useAppSelector,useAppDispatch } from "../store/hooks";
-import { fetchTicketList } from "../store/ticketSlice";
+import { useAppSelector } from "../store/hooks";
 
 const ticketCategories: TicketCategory[] = [
     { type: "todo", label: "Todo" },
@@ -10,14 +8,9 @@ const ticketCategories: TicketCategory[] = [
 ];
 
 export default function useTicketList() {
-	const ticketList = useAppSelector(state => state.tickets.ticketList);
-	const isLoading = useAppSelector(state => state.tickets.isLoading);
-	const error = useAppSelector(state => state.tickets.error);
-	const dispatch = useAppDispatch();
-
-    React.useEffect(() => {
-        dispatch(fetchTicketList())
-    }, [dispatch]);
+    const ticketList = useAppSelector((state) => state.tickets.ticketList);
+    const isLoading = useAppSelector((state) => state.tickets.isLoading);
+    const error = useAppSelector((state) => state.tickets.error);
 
     return { ticketCategories, ticketList, isLoading, error };
 }

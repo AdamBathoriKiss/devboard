@@ -1,7 +1,6 @@
 import type React from "react";
 import { useParams } from "react-router";
 import { useAppSelector } from "../../store/hooks";
-import useTicketList from "../../hooks/useTicketList";
 
 type TicketDetailProps = {
 	type: "edit" | "create";
@@ -9,11 +8,8 @@ type TicketDetailProps = {
 
 export default function TicketDetail({ type }: TicketDetailProps): React.JSX.Element {
 	const ticketId = useParams();
-	const ticketList =
-		useAppSelector((state) => state.tickets.ticketList).length === 0
-			? useTicketList().ticketList
-			: useAppSelector((state) => state.tickets.ticketList);
-	const currentTicket = ticketList.find((item) => item.id === ticketId.id);
+	const ticketList = useAppSelector((state) => state.tickets.ticketList)
+	const currentTicket = ticketList.length !== 0 && ticketList.find((item) => item.id === ticketId.id);
 
 	if (type === "edit") {
 		if (!currentTicket) {
