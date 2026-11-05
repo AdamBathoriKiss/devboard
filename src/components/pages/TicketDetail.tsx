@@ -13,7 +13,7 @@ export default function TicketDetail({
     const ticketId = useParams();
     const ticketList = useAppSelector((state) => state.tickets.ticketList).length === 0 ? useTicketList().ticketList : useAppSelector((state) => state.tickets.ticketList);
     const currentTicket = ticketList.find((item) => item.id === ticketId.id);
-console.log(ticketList)
+    
     if (type === "edit") {
         if (!currentTicket) {
             return (
@@ -40,7 +40,31 @@ console.log(ticketList)
         return (
             <div className="content">
                 <div className="card">
-                    <h3>Hozzáadás</h3>
+                   <div className="form">
+                    <label htmlFor="title">Cím</label>
+                    <input type="text" name="title" />
+                    
+                    <label htmlFor="description">Leírás</label>
+                    <input type="text" name="description" />
+                    
+                    <label htmlFor="responsible">Felelős</label>
+                    <input type="text" name="responsible" />
+                    
+                    <label htmlFor="status">Állapot</label>
+                    <input type="text" name="status" />
+                    
+                    <label htmlFor="priority">Prioritás</label>
+                    <input type="text" name="priority" />
+                    
+                    <label htmlFor="updatedAt">Frissítve</label>
+                    <input type="text" name="updatedAt" />
+                    
+                    <label htmlFor="gitHubLink">Github link</label>
+                    <input type="text" name="gitHubLink" />
+                    
+                    <label htmlFor="gitHubIssueNumber">Github feladat szám</label>
+                    <input type="text" name="gitHubIssueNumber" />
+                   </div>
                 </div>
             </div>
         );
