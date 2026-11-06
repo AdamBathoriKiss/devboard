@@ -11,13 +11,33 @@ export interface TicketState {
     error: string | null;
 }
 
-export const fetchTicketList = createAsyncThunk("tickets/list", async ():Promise<Ticket[]> => {
-    const response = await fetch("/api/tickets").then((res) => {
-        if (!res.ok) throw new Error(`Hiba: ${res.status}`);
-        return res.json();
-    });
-    return response;
-});
+export const fetchTicketList = createAsyncThunk(
+    "tickets/list",
+    async (): Promise<Ticket[]> => {
+        const response = await fetch("/api/tickets").then((res) => {
+            if (!res.ok) throw new Error(`Hiba: ${res.status}`);
+            return res.json();
+        });
+        return response;
+    },
+);
+
+export const createTicket = createAsyncThunk(
+    "tickets/edit/:id",
+    async (postData): Promise<Ticket[]> => {
+        const response = await fetch("/api/tickets/edit/:id", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(postData),
+        }).then((res) => {
+            if (!res.ok) throw new Error(`Hiba: ${res.status}`);
+            return res.json();
+        });
+        return response;
+    },
+);
 
 const initialState: TicketState = {
     ticketList: [],
@@ -44,6 +64,18 @@ export const ticketSlice = createSlice({
             state.isLoading = false;
         });
         builder.addCase(fetchTicketList.rejected, (state, action) => {
+            state.error = action.error.message ?? "Váratlan hiba történt";
+            state.isLoading = false;
+        });
+        builder.addCase(createTicket.pending, (state) => {
+            state.isLoading = true;
+            state.error = null;
+        });
+        builder.addCase(createTicket.fulfilled, (state, action) => {
+            state.ticketList.push(action.payload);
+            state.isLoading = false;
+        });
+        builder.addCase(createTicket.rejected, (state, action) => {
             state.error = action.error.message ?? "Váratlan hiba történt";
             state.isLoading = false;
         });
