@@ -17,7 +17,7 @@ export default function useTicketHandling({
 }: {
     currentTicket: Ticket | null;
 }, type : TicketDetailProps['type']) {
-    const [form, setForm] = useState<Ticket>(type === 'create' && currentTicket !== null ? currentTicket : defaultTicket);
+    const [form, setForm] = useState<Ticket>(type === 'edit' && currentTicket !== null ? currentTicket : defaultTicket);
 
 
     const handleChanges = (
