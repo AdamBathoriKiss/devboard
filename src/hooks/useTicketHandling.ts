@@ -15,7 +15,10 @@ const defaultTicket: Ticket = {
     updatedAt: new Date().toISOString(),
 };
 
-export default function useTicketHandling(currentTicket: Ticket | null,type: TicketDetailProps["type"]) {
+export default function useTicketHandling(
+    currentTicket: Ticket | null,
+    type: TicketDetailProps["type"],
+) {
     const [form, setForm] = useState<Ticket>(
         type === "edit" && currentTicket !== null
             ? currentTicket
@@ -34,8 +37,10 @@ export default function useTicketHandling(currentTicket: Ticket | null,type: Tic
     };
 
     const handleSubmit = () => {
-        dispatch(createTicket(form));
-        navigate('/')
+        dispatch(createTicket(form))
+            .then(() => navigate("/"))
+            .catch((err) => console.log(err))
+            .finally(() => navigate("/"));
     };
 
     return { form, handleChanges, handleSubmit };
