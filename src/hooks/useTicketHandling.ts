@@ -24,6 +24,7 @@ export default function useTicketHandling(
             ? currentTicket
             : defaultTicket,
     );
+    const [submitError, setSubmitError] = useState<string | null>();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -38,10 +39,10 @@ export default function useTicketHandling(
 
     const handleSubmit = () => {
         dispatch(createTicket(form))
+            .unwrap()
             .then(() => navigate("/"))
-            .catch((err) => console.log(err))
-            .finally(() => navigate("/"));
+            .catch((err) => setSubmitError(err.message))
     };
 
-    return { form, handleChanges, handleSubmit };
+    return { form, handleChanges, handleSubmit, submitError };
 }

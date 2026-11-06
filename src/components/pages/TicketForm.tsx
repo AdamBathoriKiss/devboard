@@ -10,11 +10,20 @@ interface TicketDetail {
 }
 
 export default function TicketForm({ type, currentTicket }: TicketDetail) {
-    const { form, handleChanges, handleSubmit } = useTicketHandling(
-        currentTicket,
-        type,
-    );
+    const { form, handleChanges, handleSubmit, submitError } =
+        useTicketHandling(currentTicket, type);
 
+    if (submitError) {
+        console.log(submitError)
+        return (
+            <div className="content">
+                <div className="card">
+                    <h6>Váratlan hiba történt:</h6>
+                    <p style={{color:'red'}}>{submitError}</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="content">
