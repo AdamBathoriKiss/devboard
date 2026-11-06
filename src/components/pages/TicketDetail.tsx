@@ -12,7 +12,17 @@ export default function TicketDetail({
 }: TicketDetailProps): React.JSX.Element {
     const ticketId = useParams();
     const ticketList = useAppSelector((state) => state.tickets.ticketList);
-    const currentTicket = ticketList.find((item) => item.id === ticketId.id) ?? null;
+    const isLoading = useAppSelector((state) => state.tickets.isLoading);
+    const currentTicket =
+        ticketList.find((item) => item.id === ticketId.id) ?? null;
 
-    return <TicketForm type={type} currentTicket={currentTicket}/>
+    if (isLoading) {
+        return (
+            <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+        );
+    } else {
+        return <TicketForm type={type} currentTicket={currentTicket} />;
+    }
 }
