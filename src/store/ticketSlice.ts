@@ -41,7 +41,7 @@ export const createTicket = createAsyncThunk(
 
 export const editTicket = createAsyncThunk(
     "tickets/edit/:id",
-    async (postData): Promise<Ticket[]> => {
+    async (postData:Ticket): Promise<Ticket[]> => {
         const response = await fetch("/api/tickets/edit/:id", {
             method: "PATCH",
             headers: {
