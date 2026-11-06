@@ -12,16 +12,20 @@ const defaultTicket: Ticket = {
     updatedAt: new Date().toLocaleString("Hu-hu").split("T")[0],
 };
 
-export default function useTicketHandling({
-    currentTicket
-}: {
-    currentTicket: Ticket | null;
-}, type : TicketDetailProps['type']) {
-    const [form, setForm] = useState<Ticket>(type === 'edit' && currentTicket !== null ? currentTicket : defaultTicket);
-
+export default function useTicketHandling(
+    currentTicket: Ticket | null,
+    type: TicketDetailProps["type"],
+) {
+    const [form, setForm] = useState<Ticket>(
+        type === "edit" && currentTicket !== null
+            ? currentTicket
+            : defaultTicket,
+    );
 
     const handleChanges = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+        e: React.ChangeEvent<
+            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >,
     ) => {
         const { name, value } = e.target;
         setForm((prev) => (prev ? { ...prev, [name]: value } : prev));

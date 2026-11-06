@@ -1,7 +1,6 @@
 import type React from "react";
 import { useParams } from "react-router";
 import { useAppSelector } from "../../store/hooks";
-import useTicketHandling from "../../hooks/useTicketHandling";
 import TicketForm from "./TicketForm";
 
 export type TicketDetailProps = {
@@ -15,5 +14,5 @@ export default function TicketDetail({
     const ticketList = useAppSelector((state) => state.tickets.ticketList);
     const currentTicket = ticketList.find((item) => item.id === ticketId.id) ?? null;
 
-    return <TicketForm />
+    return <TicketForm type={type} currentTicket={currentTicket}/>
 }

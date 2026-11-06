@@ -4,11 +4,11 @@ import type { TicketDetailProps } from "./TicketDetail";
 
 interface TicketDetail {
     type: TicketDetailProps['type'],
-    currentTicket: Ticket
+    currentTicket: Ticket | null
 }
 
 export default function TicketForm({type,currentTicket}: TicketDetail) {
-    const {form, handleChanges, handleSubmit} = useTicketHandling(type, currentTicket);
+    const {form, handleChanges, handleSubmit} = useTicketHandling(currentTicket, type);
     return (
         <div className="content">
             <div className="card">
