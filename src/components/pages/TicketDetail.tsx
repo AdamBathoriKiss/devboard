@@ -36,7 +36,7 @@ export default function TicketDetail({
         );
     } else {
         return (
-            <TicketForm key={type} type={type} currentTicket={currentTicket} />
+            <TicketForm key={ticketId.id ?? "create"} type={type} currentTicket={currentTicket} />
         );
     }
 }
