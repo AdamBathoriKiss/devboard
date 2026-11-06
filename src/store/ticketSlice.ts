@@ -84,16 +84,8 @@ export const ticketSlice = createSlice({
             state.error = action.error.message ?? "Váratlan hiba történt";
             state.isLoading = false;
         });
-        builder.addCase(createTicket.pending, (state) => {
-            state.isLoading = true;
-            state.error = null;
-        });
         builder.addCase(createTicket.fulfilled, (state, action) => {
             state.ticketList.push(action.payload);
-            state.isLoading = false;
-        });
-        builder.addCase(createTicket.rejected, (state, action) => {
-            state.error = action.error.message ?? "Váratlan hiba történt";
             state.isLoading = false;
         });
 

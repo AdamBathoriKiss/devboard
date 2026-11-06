@@ -17,7 +17,7 @@ export const handlers = [
             updatedAt: new Date().toISOString(), // 3. most, ISO formátumban
         };
 
-        return HttpResponse.json(null, { status: 500 }); // 4. mit küldünk vissza?
+        return HttpResponse.json(newTicket, { status: 201 }); // 4. mit küldünk vissza?
     }),
     http.patch("/api/tickets/edit/:id", async ({ request }) => {
         const formData = await request.formData();
