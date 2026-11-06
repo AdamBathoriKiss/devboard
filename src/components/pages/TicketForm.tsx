@@ -1,15 +1,19 @@
 import useTicketHandling from "../../hooks/useTicketHandling";
 import type { Ticket } from "../../types/ticket";
+import Button from "../shared/Button";
 import type { TicketDetailProps } from "./TicketDetail";
 
 interface TicketDetail {
-    type: TicketDetailProps['type'],
-    currentTicket: Ticket | null
+    type: TicketDetailProps["type"];
+    currentTicket: Ticket | null;
 }
 
-export default function TicketForm({type,currentTicket}: TicketDetail) {
-    const {form, handleChanges, handleSubmit} = useTicketHandling(currentTicket, type);
-    
+export default function TicketForm({ type, currentTicket }: TicketDetail) {
+    const { form, handleChanges, handleSubmit } = useTicketHandling(
+        currentTicket,
+        type,
+    );
+
     return (
         <div className="content">
             <div className="card">
@@ -85,9 +89,11 @@ export default function TicketForm({type,currentTicket}: TicketDetail) {
                         onChange={handleChanges}
                     />
 
-                    <button className="" onClick={handleSubmit}>
-                        Mentés
-                    </button>
+                    <Button
+                        className="componentBox"
+                        label="Mentés"
+                        onClick={handleSubmit}
+                    />
                 </div>
             </div>
         </div>

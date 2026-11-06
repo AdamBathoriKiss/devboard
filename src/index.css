@@ -249,8 +249,8 @@ nav > ul {
 	width: min(100%, 32rem);
 	height: auto;
 	margin: 0 auto;
-	padding: clamp(1.25rem, 4vw, 2.5rem);
-	background: var(--boxBg);
+	padding: clamp(1.25rem, 3vw, 2.5rem);
+	background: var(--social-bg);
 	border: 1px solid var(--border);
 	border-radius: 1rem;
 	box-shadow: var(--shadow);
@@ -277,9 +277,10 @@ nav > ul {
 .form select {
 	width: 100%;
 	min-height: 1.8rem;
-	padding: 0.7rem 0.9rem;
+	padding: 0.8rem 0.9rem;
+	margin-bottom: 0.4rem;
 	border: 1px solid var(--border);
-	border-radius: 0.65rem;
+	border-radius: 0.45rem;
 	background: var(--bg);
 	color: var(--text-h);
 	font: inherit;
