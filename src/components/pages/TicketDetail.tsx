@@ -24,7 +24,8 @@ export default function TicketDetail({
     return (
         <div className="content">
             <div className="card">
-                <h3># {form.id} szerkesztése </h3>
+                {type === 'edit' ? <h3># {form.id} szerkesztése </h3> :
+                <h3>Ticket létrehozása</h3>}
                 <div className="form">
                     <label htmlFor="title">Cím</label>
                     <input
