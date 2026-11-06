@@ -88,19 +88,10 @@ export const ticketSlice = createSlice({
             state.ticketList.push(action.payload);
             state.isLoading = false;
         });
-
-        /*  builder.addCase(editTicket.pending, (state) => {
-            state.isLoading = true;
-            state.error = null;
-        });
         builder.addCase(editTicket.fulfilled, (state, action) => {
-            state.ticketList.push(action.payload);
+            state.ticketList = action.payload;
             state.isLoading = false;
         });
-        builder.addCase(editTicket.rejected, (state, action) => {
-            state.error = action.error.message ?? "Váratlan hiba történt";
-            state.isLoading = false;
-        }); */
     },
 });
 

@@ -20,12 +20,11 @@ export const handlers = [
         return HttpResponse.json(newTicket, { status: 201 }); // 4. mit küldünk vissza?
     }),
     http.patch("/api/tickets/edit/:id", async ({ request }) => {
-        const editedTicket = (await request.json()) as Ticket; // 1. a beküldött adat
-        const editId = editedTicket.id;
-        let prevTicket = mockTickets.find((item) => item.id === editId) as Ticket;
+        const editedTicket = (await request.json()) as Ticket; 
+        let prevTicket = mockTickets.find((item) => item.id === editedTicket.id) as Ticket;
 
         const newTicket: Ticket = {
-            ...editedTicket, // minden, amit a form küldött
+            ...editedTicket,
             id: prevTicket.id,
             updatedAt: new Date().toISOString(), // 3. most, ISO formátumban
         };
