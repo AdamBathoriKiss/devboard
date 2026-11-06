@@ -14,18 +14,24 @@ export default function TicketDetail({
     const ticketList = useAppSelector((state) => state.tickets.ticketList);
     const currentTicket =
         ticketList.find((item) => item.id === ticketId.id) ?? null;
-    const { form, handleChanges, handleSubmit } = useTicketHandling({
-        currentTicket
-    }, type);
+    const { form, handleChanges, handleSubmit } = useTicketHandling(
+        {
+            currentTicket,
+        },
+        type,
+    );
 
-	if(form === undefined) {
-		return <h3>Nem található adat</h3>
-	}
+    if (form === undefined) {
+        return <h3>Nem található adat</h3>;
+    }
     return (
         <div className="content">
             <div className="card">
-                {type === 'edit' ? <h3># {form.id} szerkesztése </h3> :
-                <h3>Ticket létrehozása</h3>}
+                {type === "edit" ? (
+                    <h3># {form.id} szerkesztése </h3>
+                ) : (
+                    <h3>Ticket létrehozása</h3>
+                )}
                 <div className="form">
                     <label htmlFor="title">Cím</label>
                     <input
@@ -60,17 +66,18 @@ export default function TicketDetail({
                     />
 
                     <label htmlFor="priority">Prioritás</label>
-                    <input type="text" name="priority" 
+                    <input
+                        type="text"
+                        name="priority"
                         value={form.priority}
-                        onChange={handleChanges}/>
+                        onChange={handleChanges}
+                    />
 
                     <label htmlFor="updatedAt">Frissítve</label>
                     <input
                         type="text"
                         name="updatedAt"
-                        value={
-                            form.updatedAt
-                        }
+                        value={form.updatedAt}
                         disabled={true}
                     />
 
@@ -92,7 +99,9 @@ export default function TicketDetail({
                         onChange={handleChanges}
                     />
 
-                    <button className="" onClick={handleSubmit}>Mentés</button>
+                    <button className="" onClick={handleSubmit}>
+                        Mentés
+                    </button>
                 </div>
             </div>
         </div>

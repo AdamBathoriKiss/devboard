@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import type { Ticket, TicketCategory } from "../types/ticket";
+import React, { useState } from "react";
+import type { Ticket } from "../types/ticket";
 import type { TicketDetailProps } from "../components/pages/TicketDetail";
 
 const defaultTicket: Ticket = {
@@ -16,16 +16,9 @@ export default function useTicketHandling({
     currentTicket
 }: {
     currentTicket: Ticket | null;
-}, type : TicketDetailProps) {
-    const [form, setForm] = useState<Ticket>(defaultTicket);
+}, type : TicketDetailProps['type']) {
+    const [form, setForm] = useState<Ticket>(type === 'create' && currentTicket !== null ? currentTicket : defaultTicket);
 
-    useEffect(() => {
-        if (currentTicket && type === 'edit') {
-            setForm(currentTicket);
-        }else {
-            setForm(defaultTicket)
-        }
-    }, [currentTicket]);
 
     const handleChanges = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
