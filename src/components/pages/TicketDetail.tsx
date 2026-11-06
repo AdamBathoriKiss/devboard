@@ -23,6 +23,6 @@ export default function TicketDetail({
             </div>
         );
     } else {
-        return <TicketForm type={type} currentTicket={currentTicket} />;
+        return <TicketForm key={type} type={type} currentTicket={currentTicket} />;
     }
 }
