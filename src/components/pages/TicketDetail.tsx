@@ -18,11 +18,25 @@ export default function TicketDetail({
 
     if (isLoading) {
         return (
-            <div className="spinner-border" role="status">
-                <span className="visually-hidden">Loading...</span>
+            <div className="content">
+                <div className="card">
+                    <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        );
+    } else if (type === "edit" && currentTicket === null) {
+        return (
+            <div className="content">
+                <div className="card">
+                    <h3>A keresett ticket nem található!</h3>
+                </div>
             </div>
         );
     } else {
-        return <TicketForm key={type} type={type} currentTicket={currentTicket} />;
+        return (
+            <TicketForm key={type} type={type} currentTicket={currentTicket} />
+        );
     }
 }

@@ -9,6 +9,7 @@ interface TicketDetail {
 
 export default function TicketForm({type,currentTicket}: TicketDetail) {
     const {form, handleChanges, handleSubmit} = useTicketHandling(currentTicket, type);
+    
     return (
         <div className="content">
             <div className="card">
