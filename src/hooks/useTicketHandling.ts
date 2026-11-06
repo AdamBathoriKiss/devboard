@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import type { Ticket } from "../types/ticket";
 import type { TicketDetailProps } from "../components/pages/TicketDetail";
+import { useAppDispatch } from "../store/hooks";
+import { createTicket } from "../store/ticketSlice";
 
 const defaultTicket: Ticket = {
     id: "",
@@ -12,15 +14,13 @@ const defaultTicket: Ticket = {
     updatedAt: new Date().toISOString(),
 };
 
-export default function useTicketHandling(
-    currentTicket: Ticket | null,
-    type: TicketDetailProps["type"],
-) {
+export default function useTicketHandling(currentTicket: Ticket | null,type: TicketDetailProps["type"]) {
     const [form, setForm] = useState<Ticket>(
         type === "edit" && currentTicket !== null
             ? currentTicket
             : defaultTicket,
     );
+    const dispatch = useAppDispatch();
 
     const handleChanges = (
         e: React.ChangeEvent<
@@ -31,7 +31,9 @@ export default function useTicketHandling(
         setForm((prev) => (prev ? { ...prev, [name]: value } : prev));
     };
 
-    const handleSubmit = () => {};
+    const handleSubmit = () => {
+        dispatch(createTicket(form))
+    };
 
     return { form, handleChanges, handleSubmit };
 }
