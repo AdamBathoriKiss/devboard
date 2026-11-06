@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import type { Ticket } from "../types/ticket";
+import type { Ticket, TicketCategory } from "../types/ticket";
+import type { TicketDetailProps } from "../components/pages/TicketDetail";
 
 const defaultTicket: Ticket = {
     id: "",
@@ -15,7 +16,7 @@ export default function useTicketHandling({
     currentTicket
 }: {
     currentTicket: Ticket | null;
-}, type : string) {
+}, type : TicketDetailProps) {
     const [form, setForm] = useState<Ticket>(defaultTicket);
 
     useEffect(() => {

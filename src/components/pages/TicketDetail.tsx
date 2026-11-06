@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useAppSelector } from "../../store/hooks";
 import useTicketHandling from "../../hooks/useTicketHandling";
 
-type TicketDetailProps = {
+export type TicketDetailProps = {
     type: "edit" | "create";
 };
 
