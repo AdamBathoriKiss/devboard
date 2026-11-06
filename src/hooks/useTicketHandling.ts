@@ -9,7 +9,7 @@ const defaultTicket: Ticket = {
     responsible: "",
     status: "todo",
     priority: "low",
-    updatedAt: new Date().toISOString().replace('T', ' ').split('.')[0],
+    updatedAt: new Date().toISOString(),
 };
 
 export default function useTicketHandling(

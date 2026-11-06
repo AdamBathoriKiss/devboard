@@ -1,3 +1,4 @@
+import { Formatter } from "../../handlers/dateFormatter";
 import useTicketHandling from "../../hooks/useTicketHandling";
 import type { Ticket } from "../../types/ticket";
 import Button from "../shared/Button";
@@ -13,6 +14,7 @@ export default function TicketForm({ type, currentTicket }: TicketDetail) {
         currentTicket,
         type,
     );
+
 
     return (
         <div className="content">
@@ -67,7 +69,7 @@ export default function TicketForm({ type, currentTicket }: TicketDetail) {
                     <input
                         type="text"
                         name="updatedAt"
-                        value={form.updatedAt}
+                        value={Formatter.dateFormatter(form.updatedAt)}
                         disabled={true}
                     />
 
