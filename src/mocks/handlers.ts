@@ -13,14 +13,20 @@ export const handlers = [
 
         const newTicket: Ticket = {
             ...sentTicket, // minden, amit a form küldött
-            id: crypto.randomUUID().split('-')[0], // 2. új, egyedi azonosító
+            id: crypto.randomUUID().split("-")[0], // 2. új, egyedi azonosító
             updatedAt: new Date().toISOString(), // 3. most, ISO formátumban
         };
 
         return HttpResponse.json(newTicket, { status: 201 }); // 4. mit küldünk vissza?
     }),
     http.patch("/api/tickets/edit/:id", async ({ request }) => {
-        const formData = await request.formData();
-		console.log(formData)
+        const editedTicket = (await request.json()) as Ticket; // 1. a beküldött adat
+        
+        const newTicket: Ticket = {
+            ...editedTicket, // minden, amit a form küldött
+            updatedAt: new Date().toISOString(), // 3. most, ISO formátumban
+        };
+
+        return HttpResponse.json(newTicket, { status: 201 }); // 4. mit küldünk vissza?
     }),
 ];
