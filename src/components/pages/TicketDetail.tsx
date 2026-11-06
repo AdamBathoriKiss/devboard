@@ -68,9 +68,9 @@ export default function TicketDetail({
                         type="text"
                         name="updatedAt"
                         value={
-                            form.updatedAt.toLocaleString("Hu-hu").split("T")[0]
+                            form.updatedAt
                         }
-                        onChange={handleChanges}
+                        disabled={true}
                     />
 
                     <label htmlFor="gitHubLink">Github link</label>
@@ -90,6 +90,8 @@ export default function TicketDetail({
                         value={form.gitHubIssueNumber}
                         onChange={handleChanges}
                     />
+
+                    <button className="" onClick={handleSubmit}>Mentés</button>
                 </div>
             </div>
         </div>

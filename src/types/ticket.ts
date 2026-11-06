@@ -13,7 +13,7 @@ export type Ticket = {
     responsible: string;
     status: TicketStatus;
     priority: TicketPriority;
-    updatedAt: string | Date;
+    updatedAt: string;
     gitHubLink?: string;
     gitHubIssueNumber?: number;
 };

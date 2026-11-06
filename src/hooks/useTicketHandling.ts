@@ -8,7 +8,7 @@ const defaultTicket: Ticket = {
     responsible: "",
     status: "todo",
     priority: "low",
-    updatedAt: new Date(),
+    updatedAt: new Date().toLocaleString("Hu-hu").split("T")[0],
 };
 
 export default function useTicketHandling({
