@@ -89,7 +89,7 @@ export const ticketSlice = createSlice({
             state.isLoading = false;
         });
         builder.addCase(editTicket.fulfilled, (state, action) => {
-            state.ticketList.push(action.payload);
+            state.ticketList.findIndex((item) => item.id === action.payload.id)
             state.isLoading = false;
         });
     },
