@@ -21,7 +21,7 @@ export const handlers = [
     }),
     http.patch("/api/tickets/edit/:id", async ({ request }) => {
         const editedTicket = (await request.json()) as Ticket; 
-        let prevTicket = mockTickets.find((item) => item.id === editedTicket.id) as Ticket;
+        const prevTicket = mockTickets.find((item) => item.id === editedTicket.id) as Ticket;
 
 
         const newTicket: Ticket = {
