@@ -24,7 +24,7 @@ export const fetchTicketList = createAsyncThunk(
 
 export const createTicket = createAsyncThunk(
     "tickets/create",
-    async (postData): Promise<Ticket[]> => {
+    async (postData:Ticket): Promise<Ticket> => {
         const response = await fetch("/api/tickets/create", {
             method: "POST",
             headers: {
@@ -89,7 +89,7 @@ export const ticketSlice = createSlice({
             state.error = null;
         });
         builder.addCase(createTicket.fulfilled, (state, action) => {
-            state.ticketList = action.payload;
+            state.ticketList.push(action.payload);
             state.isLoading = false;
         });
         builder.addCase(createTicket.rejected, (state, action) => {
