@@ -23,10 +23,27 @@ export const fetchTicketList = createAsyncThunk(
 );
 
 export const createTicket = createAsyncThunk(
+    "tickets/create",
+    async (postData): Promise<Ticket[]> => {
+        const response = await fetch("/api/tickets/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(postData),
+        }).then((res) => {
+            if (!res.ok) throw new Error(`Hiba: ${res.status}`);
+            return res.json();
+        });
+        return response;
+    },
+);
+
+export const editTicket = createAsyncThunk(
     "tickets/edit/:id",
     async (postData): Promise<Ticket[]> => {
         const response = await fetch("/api/tickets/edit/:id", {
-            method: "POST",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -72,13 +89,26 @@ export const ticketSlice = createSlice({
             state.error = null;
         });
         builder.addCase(createTicket.fulfilled, (state, action) => {
-            state.ticketList.push(action.payload);
+            state.ticketList = action.payload;
             state.isLoading = false;
         });
         builder.addCase(createTicket.rejected, (state, action) => {
             state.error = action.error.message ?? "Váratlan hiba történt";
             state.isLoading = false;
         });
+
+        /*  builder.addCase(editTicket.pending, (state) => {
+            state.isLoading = true;
+            state.error = null;
+        });
+        builder.addCase(editTicket.fulfilled, (state, action) => {
+            state.ticketList.push(action.payload);
+            state.isLoading = false;
+        });
+        builder.addCase(editTicket.rejected, (state, action) => {
+            state.error = action.error.message ?? "Váratlan hiba történt";
+            state.isLoading = false;
+        }); */
     },
 });
 
