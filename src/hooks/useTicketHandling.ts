@@ -3,6 +3,7 @@ import type { Ticket } from "../types/ticket";
 import type { TicketDetailProps } from "../components/pages/TicketDetail";
 import { useAppDispatch } from "../store/hooks";
 import { createTicket } from "../store/ticketSlice";
+import { useNavigate } from "react-router";
 
 const defaultTicket: Ticket = {
     id: "",
@@ -21,6 +22,7 @@ export default function useTicketHandling(currentTicket: Ticket | null,type: Tic
             : defaultTicket,
     );
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const handleChanges = (
         e: React.ChangeEvent<
@@ -32,7 +34,8 @@ export default function useTicketHandling(currentTicket: Ticket | null,type: Tic
     };
 
     const handleSubmit = () => {
-        dispatch(createTicket(form))
+        dispatch(createTicket(form));
+        navigate('/')
     };
 
     return { form, handleChanges, handleSubmit };
