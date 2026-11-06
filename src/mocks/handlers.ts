@@ -23,9 +23,10 @@ export const handlers = [
         const editedTicket = (await request.json()) as Ticket; 
         let prevTicket = mockTickets.find((item) => item.id === editedTicket.id) as Ticket;
 
+
         const newTicket: Ticket = {
+            ...prevTicket,
             ...editedTicket,
-            id: prevTicket.id,
             updatedAt: new Date().toISOString(), // 3. most, ISO formátumban
         };
 
