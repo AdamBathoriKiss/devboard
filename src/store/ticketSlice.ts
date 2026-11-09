@@ -102,4 +102,5 @@ export const ticketSlice = createSlice({
 });
 
 export const { setLoading } = ticketSlice.actions;
+export const { setSearchParam } = ticketSlice.actions;
 export default ticketSlice.reducer;

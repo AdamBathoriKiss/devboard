@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useMediaQuery } from "./useMediaQuery";
-import { ticketSlice } from "../store/ticketSlice";
+import { setSearchParam } from "../store/ticketSlice";
 import { useAppDispatch } from "../store/hooks";
 
 export default function useNavigation() {
@@ -11,7 +11,7 @@ export default function useNavigation() {
     const dispatch = useAppDispatch();
 
     const handleSearchParam = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(ticketSlice.actions.setSearchParam(e.target.value));
+        dispatch(setSearchParam(e.target.value));
     }
 
 	const toggleMenu = () => {
