@@ -11,11 +11,12 @@ const ticketCategories: TicketCategory[] = [
 export default function useTicketList() {
 	const list = useAppSelector((state) => state.tickets.ticketList);
 	const searchParam = useAppSelector((state) => state.tickets.searchParam);
-	const filteredList = useMemo(() => list.filter((item) => item.title.includes(searchParam)), [searchParam]);
 	const isLoading = useAppSelector((state) => state.tickets.isLoading);
 	const error = useAppSelector((state) => state.tickets.error);
-
-	const ticketList = searchParam.length !== 0 ? filteredList : list;
+	const ticketList = useMemo(
+		() => list.filter((item) => item.title.toLowerCase().includes(searchParam.toLowerCase())),
+		[list, searchParam],
+	);
 
 	return { ticketCategories, searchParam, ticketList, isLoading, error };
 }
