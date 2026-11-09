@@ -2,11 +2,9 @@ import React from "react";
 import Button from "../shared/Button";
 import useNavigation from "../../hooks/useNavigation.ts";
 import { icons } from "../shared/icons.tsx";
-import { useAppSelector } from "../../store/hooks.ts";
 
 export default function Navigation(): React.JSX.Element {
-	const { toggleMenu, menuActive, isMobile, refresh, createTicket, handleSearchParam } = useNavigation();
-	const searchParam = useAppSelector((state) => state.tickets.searchParam);
+	const { toggleMenu, menuActive, isMobile, refresh, createTicket, searchParam, handleSearchParam } = useNavigation();
 
 	if (isMobile) {
 		return (
