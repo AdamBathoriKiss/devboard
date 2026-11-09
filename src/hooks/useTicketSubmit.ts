@@ -6,7 +6,7 @@ import type { Ticket } from "../types/ticket";
 import type { TicketDetailProps } from "../components/pages/TicketDetail";
 
 export default function useTicketSubmit(form: Ticket, type: TicketDetailProps['type']) {
-	const [submitError, setSubmitError] = useState<string | null>();
+	const [submitError, setSubmitError] = useState<string | null>(null);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
