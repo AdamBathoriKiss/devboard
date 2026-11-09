@@ -22,7 +22,7 @@ export default function TicketForm({ type, currentTicket }: TicketDetail) {
 					<ul>
 						{submitError.map((item) => {
 							return (
-								<li>
+								<li key={item}>
 									<span style={{ color: "red", fontSize: "bold" }}>{item}</span>
 								</li>
 							);
