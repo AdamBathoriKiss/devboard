@@ -2,15 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useMediaQuery } from "./useMediaQuery";
 import { ticketSlice } from "../store/ticketSlice";
+import { useAppDispatch } from "../store/hooks";
 
 export default function useNavigation() {
 	const navigate = useNavigate();
 	const isMobile = useMediaQuery("(max-width: 568px)");
 	const [menuActive, setMenuActive] = useState(false);
+    const dispatch = useAppDispatch();
 
     const handleSearchParam = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e)
-        ticketSlice.actions.setSeachParam(e.target.value)
+        dispatch(ticketSlice.actions.setSearchParam(e.target.value));
     }
 
 	const toggleMenu = () => {

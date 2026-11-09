@@ -72,7 +72,7 @@ export const ticketSlice = createSlice({
         setLoading: (state, action: PayloadAction<boolean>) => {
             state.isLoading = action.payload;
         },
-        setSeachParam: (state, action: PayloadAction<string>) => {
+        setSearchParam: (state, action: PayloadAction<string>) => {
             state.searchParam = action.payload;
         },
     },
