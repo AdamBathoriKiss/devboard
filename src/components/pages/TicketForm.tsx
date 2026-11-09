@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Formatter } from "../../handlers/dateFormatter";
 import useTicketHandling from "../../hooks/useTicketHandling";
 import useTicketSubmit from "../../hooks/useTicketSubmit";
@@ -50,10 +49,23 @@ export default function TicketForm({ type, currentTicket }: TicketDetail) {
 					<input type="text" name="responsible" value={form.responsible} onChange={handleChanges} />
 
 					<label htmlFor="status">Állapot</label>
-					<input type="text" name="status" value={form.status} onChange={handleChanges} />
+					<select id="status" name="status" defaultValue={form.status ?? "todo"} onChange={handleChanges}>
+						<option value="todo">Új</option>
+						<option value="in_progress">Folyamatban</option>
+						<option value="closed">Lezárva</option>
+					</select>
 
 					<label htmlFor="priority">Prioritás</label>
-					<input type="text" name="priority" value={form.priority} onChange={handleChanges} />
+					<select
+						id="priority"
+						name="priority"
+						defaultValue={form.priority ?? "todo"}
+						onChange={handleChanges}
+					>
+						<option value="low">Alacsony</option>
+						<option value="medium">Közepes</option>
+						<option value="high">Magas</option>
+					</select>
 
 					<label htmlFor="updatedAt">Frissítve</label>
 					<input
