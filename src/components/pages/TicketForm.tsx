@@ -49,7 +49,7 @@ export default function TicketForm({ type, currentTicket }: TicketDetail) {
 					<input type="text" name="responsible" value={form.responsible} onChange={handleChanges} />
 
 					<label htmlFor="status">Állapot</label>
-					<select id="status" name="status" defaultValue={form.status ?? "todo"} onChange={handleChanges}>
+					<select id="status" name="status" value={form.status} onChange={handleChanges}>
 						<option value="todo">Új</option>
 						<option value="in_progress">Folyamatban</option>
 						<option value="closed">Lezárva</option>
@@ -59,7 +59,7 @@ export default function TicketForm({ type, currentTicket }: TicketDetail) {
 					<select
 						id="priority"
 						name="priority"
-						defaultValue={form.priority ?? "todo"}
+						value={form.priority}
 						onChange={handleChanges}
 					>
 						<option value="low">Alacsony</option>
