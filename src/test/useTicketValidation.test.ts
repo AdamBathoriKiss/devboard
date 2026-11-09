@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import type { Ticket } from "../types/ticket";
-import useTicketSubmit from "../hooks/useTicketSubmit";
+import useTicketValidation from "../hooks/useTicketValidation";
 
 const validTicket: Ticket = {
     id: "22632",
@@ -12,5 +12,15 @@ const validTicket: Ticket = {
     updatedAt: "2026-11-09"
 }
 
-const { result } = renderHook(() => useTicketSubmit(validTicket, "create"));
-expect(result.current.submitError).toEqual([`A title mező kitöltése kötelező.`,`A description mező kitöltése kötelező.`,`A responsible mező kitöltése kötelező.`, ]);
+describe("useTicketValidation", () => {
+    it("üres mezőkre 3 hiba", () => {
+        const emptyTicket = { ...validTicket, title: "", description: "", responsible: "" };
+        const { result } = renderHook(() => useTicketValidation(emptyTicket));
+        expect(result.current.errors).toHaveLength(3);
+    });
+
+    it("kitöltött ticketre 0 hiba", () => {
+        const { result } = renderHook(() => useTicketValidation(validTicket));
+        expect(result.current.errors).toHaveLength(0);
+    });
+});
