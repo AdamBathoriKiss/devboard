@@ -4,13 +4,20 @@ import { createTicket, editTicket } from "../store/ticketSlice";
 import { useNavigate } from "react-router";
 import type { Ticket } from "../types/ticket";
 import type { TicketDetailProps } from "../components/pages/TicketDetail";
+import useTicketValidation from "./useTicketValidation";
 
-export default function useTicketSubmit(form: Ticket, type: TicketDetailProps['type']) {
-	const [submitError, setSubmitError] = useState<string | null>(null);
+export default function useTicketSubmit(form: Ticket, type: TicketDetailProps["type"]) {
+	const [submitError, setSubmitError] = useState<string[] | null>(null);
+	const { errors } = useTicketValidation(form);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
 	const handleSubmit = () => {
+		if (errors && errors?.length > 0) {
+			setSubmitError(errors)
+            return
+		}
+
 		if (type === "create") {
 			dispatch(createTicket(form))
 				.unwrap()
@@ -26,5 +33,5 @@ export default function useTicketSubmit(form: Ticket, type: TicketDetailProps['t
 		}
 	};
 
-    return {handleSubmit, submitError}
+	return { handleSubmit, submitError, setSubmitError };
 }

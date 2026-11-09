@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Formatter } from "../../handlers/dateFormatter";
 import useTicketHandling from "../../hooks/useTicketHandling";
 import useTicketSubmit from "../../hooks/useTicketSubmit";
@@ -12,23 +13,31 @@ interface TicketDetail {
 
 export default function TicketForm({ type, currentTicket }: TicketDetail) {
 	const { form, handleChanges } = useTicketHandling(currentTicket, type);
-    const { handleSubmit, submitError} = useTicketSubmit(form,type);
+	const { handleSubmit, submitError, setSubmitError } = useTicketSubmit(form, type);
 
-	if (submitError) {
-		console.log(submitError);
-		return (
-			<div className="content">
-				<div className="card">
-					<h6>Váratlan hiba történt:</h6>
-					<p style={{ color: "red" }}>{submitError}</p>
-				</div>
-			</div>
-		);
-	}
+	const errorDialog = () => {
+		if (submitError && submitError?.length > 0) {
+			return (
+				<dialog id="errorDialog">
+					<ul>
+						{submitError.map((item) => {
+							return (
+								<li>
+									<span style={{ color: "red", fontSize: "bold" }}>{item}</span>
+								</li>
+							);
+						})}
+					</ul>
+					<button onClick={() => setSubmitError(null)}>Close</button>
+				</dialog>
+			);
+		}
+	};
 
 	return (
 		<div className="content">
 			<div className="card">
+				{errorDialog()}
 				{type === "edit" ? <h3># {form.id} szerkesztése </h3> : <h3>Ticket létrehozása</h3>}
 				<div className="form">
 					<label htmlFor="title">Cím</label>
