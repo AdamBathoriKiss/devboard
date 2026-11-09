@@ -7,6 +7,7 @@ import type { Ticket } from "../types/ticket";
 
 export interface TicketState {
     ticketList: Ticket[];
+    searchParam: string,
     isLoading: boolean;
     error: string | null;
 }
@@ -58,6 +59,7 @@ export const editTicket = createAsyncThunk(
 
 const initialState: TicketState = {
     ticketList: [],
+    searchParam: "",
     isLoading: true,
     error: null,
 };
@@ -69,6 +71,9 @@ export const ticketSlice = createSlice({
         /* Tanultam belőle, marad */
         setLoading: (state, action: PayloadAction<boolean>) => {
             state.isLoading = action.payload;
+        },
+        setSeachParam: (state, action: PayloadAction<string>) => {
+            state.searchParam = action.payload;
         },
     },
     extraReducers: (builder) => {
