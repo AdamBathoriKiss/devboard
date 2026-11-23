@@ -8,6 +8,6 @@ async function enableMocking() {
   return worker.start({ onUnhandledFrame: "bypass" });
 }
 
-enableMocking().then(() => {
+//enableMocking().then(() => {
   createRoot(document.getElementById("root")!).render(<App />);
-});
+//});

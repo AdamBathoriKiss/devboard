@@ -12,10 +12,12 @@ export interface TicketState {
     error: string | null;
 }
 
+const url = import.meta.env.VITE_BASE_URL;
+
 export const fetchTicketList = createAsyncThunk(
     "tickets/list",
     async (): Promise<Ticket[]> => {
-        const response = await fetch("/api/tickets").then((res) => {
+        const response = await fetch(`${url}/api/tickets`).then((res) => {
             if (!res.ok) throw new Error(`Hiba: ${res.status}`);
             return res.json();
         });
@@ -26,7 +28,7 @@ export const fetchTicketList = createAsyncThunk(
 export const createTicket = createAsyncThunk(
     "tickets/create",
     async (postData:Ticket): Promise<Ticket> => {
-        const response = await fetch("/api/tickets/create", {
+        const response = await fetch(`${url}/api/tickets/create`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -35,6 +37,8 @@ export const createTicket = createAsyncThunk(
         }).then((res) => {
             if (!res.ok) throw new Error(`Hiba: ${res.status}`);
             return res.json();
+        }).catch((error) => {
+            return error.message
         });
         return response;
     },
