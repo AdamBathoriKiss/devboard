@@ -6,7 +6,7 @@ export default function useTicketValidation(form: Ticket) {
 	for (const [key, value] of Object.entries(form)) {
 		switch (key) {
 			case "title":
-			case "description":
+			//case "description":
 			case "responsible":
 				if (value === "" || value === null) errors.push(`A ${key} mező kitöltése kötelező.`);
 				break;

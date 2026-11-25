@@ -15,7 +15,7 @@ export default function TicketForm({ type, currentTicket }: TicketDetail) {
 	const { handleSubmit, submitError, setSubmitError } = useTicketSubmit(form, type);
 
 	const errorDialog = () => {
-		if (submitError && submitError?.length > 0) {
+		if (submitError && Array.isArray(submitError)) {
 			return (
 				<dialog id="errorDialog">
 					<ul>
@@ -30,6 +30,8 @@ export default function TicketForm({ type, currentTicket }: TicketDetail) {
 					<button onClick={() => setSubmitError(null)}>Close</button>
 				</dialog>
 			);
+		} else {
+			return <span style={{ color: "red" }}>{submitError}</span>;
 		}
 	};
 
@@ -56,12 +58,7 @@ export default function TicketForm({ type, currentTicket }: TicketDetail) {
 					</select>
 
 					<label htmlFor="priority">Prioritás</label>
-					<select
-						id="priority"
-						name="priority"
-						value={form.priority}
-						onChange={handleChanges}
-					>
+					<select id="priority" name="priority" value={form.priority} onChange={handleChanges}>
 						<option value="low">Alacsony</option>
 						<option value="medium">Közepes</option>
 						<option value="high">Magas</option>
