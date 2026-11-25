@@ -18,7 +18,7 @@ export default function TicketBox({ ticket }: TicketBoxProps): React.JSX.Element
 				<p>{ticket.title}</p>
 			</div>
 			<div className="card-details">
-				<p>{Formatter.dateFormatter(ticket.updatedAt)}</p>
+				<p>{ticket.updatedAt && Formatter.dateFormatter(ticket.updatedAt)}</p>
 				{ticket.gitHubIssueNumber && <p># {ticket.gitHubIssueNumber}</p>}
 			</div>
 		</div>

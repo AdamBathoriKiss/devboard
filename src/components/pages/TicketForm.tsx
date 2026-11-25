@@ -68,7 +68,7 @@ export default function TicketForm({ type, currentTicket }: TicketDetail) {
 					<input
 						type="text"
 						name="updatedAt"
-						value={Formatter.dateFormatter(form.updatedAt)}
+						value={form.updatedAt && Formatter.dateFormatter(form.updatedAt)}
 						disabled={true}
 					/>
 

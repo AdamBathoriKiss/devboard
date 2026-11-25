@@ -8,7 +8,7 @@ const defaultTicket: Ticket = {
 	responsible: "",
 	status: "todo",
 	priority: "low",
-	updatedAt: new Date().toISOString(),
+	updatedAt: '',
 };
 
 export default function useTicketHandling(currentTicket: Ticket | null, type: TicketDetailProps["type"]) {

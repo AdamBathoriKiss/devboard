@@ -28,7 +28,7 @@ export const fetchTicketList = createAsyncThunk(
 export const createTicket = createAsyncThunk(
     "tickets/create",
     async (postData: Ticket): Promise<Ticket> => {
-        const response = await fetch(`${url}/api/tickets/create`, {
+        const response = await fetch(`${url}/api/tickets`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const createTicket = createAsyncThunk(
 export const editTicket = createAsyncThunk(
     "tickets/edit/:id",
     async (postData: Ticket): Promise<Ticket> => {
-        const response = await fetch(`/api/tickets/edit/${postData.id}`, {
+        const response = await fetch(`${url}/api/tickets/${postData.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
