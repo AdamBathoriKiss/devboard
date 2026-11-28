@@ -56,7 +56,11 @@ export const editTicket = createAsyncThunk(
             },
             body: JSON.stringify(postData),
         }).then((res) => {
-            if (!res.ok) throw new Error(`Hiba: ${res.status}`);
+            if (!res.ok) {
+                return res.json().then((body) => {
+                    throw new Error(body.message);
+                });
+            }
             return res.json();
         });
         return response;
